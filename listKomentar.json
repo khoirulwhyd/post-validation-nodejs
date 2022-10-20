@@ -1,0 +1,50 @@
+{
+  "listKomentar": [
+    {
+      "nama": "Paijo",
+      "komentar": "aku suka nih aplikasinya nice",
+      "id": 1
+    },
+    {
+      "nama": "AMY",
+      "komentar": "aku suka nih aplikasinya BAGOOSSS CUURR",
+      "id": 2
+    },
+    {
+      "nama": "adin",
+      "komentar": "BUAGOSSS GUANTENG MASEH",
+      "id": 3
+    },
+    {
+      "nama": "asas",
+      "komentar": "ku",
+      "id": 4
+    },
+    {
+      "nama": "Sabdo Palon",
+      "komentar": "suae, saestu",
+      "id": 5
+    },
+    {
+      "nama": "Amin Raiz",
+      "komentar": "Bagus dan bermanfaat sekali",
+      "id": 6
+    },
+    {
+      "nama": "aminudin",
+      "komentar": "gud",
+      "id": 7
+    },
+    {
+      "nama": "aminudin",
+      "komentar": "gud",
+      "id": 8
+    },
+    {
+      "nama": "Sujiwo Nyowo",
+      "komentar": "Wayang itu indah",
+      "id": 9
+    }
+  ],
+  "posts": []
+}
