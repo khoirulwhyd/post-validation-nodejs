@@ -5,7 +5,6 @@ const axios = require("axios")
 const app = express()
 const port = 3000
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
-const { runValidation, validationNama } = require('./validation');
 
 
 app.set('views',path.join(__dirname,'views'))
@@ -13,8 +12,6 @@ app.set('view engine','ejs')
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.json()); //as a midleware
-
-
 
 //function addKata
 const addKata = async ( req, res) => {
@@ -58,24 +55,30 @@ const listKomentar = async ( req, res) => {
   }
 }
 
+//function getdata komentar
+async function getKomentar( req, res ) {
+  const komen = await (
+    await axios.get('http://localhost:3001/listKomentar')
+  ).data;
+  res.status(201).json({
+    getkomen: komen,
+  })
+}
+
+
 
 // ROUTER POST
 app.post('/addkata', addKata);
-app.post('/listKomentar', listKomentar, validationNama, runValidation);
+app.post('/listKomentar', listKomentar);
 
 //ROUTER GET
 app.get('/',(req,res)=>{
   res.render('form')
 })
-app.get('/listKomentar', (req, res) => {
-  axios
-  .get('http://localhost:3001/listKomentar')
-  res.send(listKomentar)
-})
+
+app.get('/listKomentar', getKomentar);
 
 //MEMANGGIL PORT
 app.listen(port,()=>{
   console.log(`App is running at port ${port}`)
 })
-
-
