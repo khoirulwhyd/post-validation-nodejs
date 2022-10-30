@@ -28,60 +28,11 @@
     </fieldset>
   </form>
 
-  <!-- <script type="text/javascript">
-      function kataValidation(){
-        var uservalue = document.getElementById('coment').value;
-        if(uservalue.replace(/\s/g, "").length <= 0) {
-          alert("tidak boleh ada spasi ketika form masih kosong");
-          return false;s
-        }
-      }
-      function tValidation(){
-        var uservalue = document.getElementById('coment').value;
-        const sKata = uservalue.split(" ");
-        const tdKata = ["cok", "asu", "babi", "jancok"];
-        var full = document.getElementById(sKata).value = tdKata.includes("cok");
-
-        if(full == true){
-          alert("tidak boleh ada spasi ketika form masih kosong");
-        }
-      }
-    </script> -->
   <script type="text/javascript">
     const name = document.getElementById('name')
     const coment = document.getElementById('coment')
     const form = document.getElementById('form')
     const errorElement = document.getElementById('error')
-
-
-
-    form.addEventListener('sumbit', (e) => {
-      let messages = []
-      var uservalue = document.getElementById("coment").value;
-      var sKata = uservalue.split(" ");
-      let ktp = ["cok", "asu", "babi", "jancok"];
-      ada = true;
-      tidak = false;
-      
-      for(let a=0; a<uservalue.length; a++) { // by input
-        for(let b=0; b<ktp.length; b++) { // by kata tidak pantas
-          if(uservalue[a] == ktp[b]) {
-            console.log(ada)
-            console.log(inp)
-            messages.push("form mengandung kata yang tidak pantas")
-          } else {
-            console.log(tidak)
-            console.log(inp)
-          }
-          return ada;
-        }
-      }
-      if (messages.length > 0) {
-        e.preventDefault()
-        errorElement.innerText = messages.join(', ')
-      }
-    })
-
 
 
     form.addEventListener('submit', (e) => { 
@@ -107,25 +58,68 @@
       }
     })
 
-    // form.addEventListener('submit', (e) => {
-    //   let messages = []
-    //   var uservalue = document.getElementById('coment').value;
-    //   var sKata = uservalue.split(" ");
-    //   const tdKata = ["cok", "asu", "babi", "jancok"];
-    //   var hasil = document.getElementById('coment').sKata = tdKata.includes("asu");
-    //   if(hasil === true ) {
-    //     messages.push("form mengandung kata yang tidak pantas")
-    //     console.log(hasil)
-    //     console.log(sKata)
-    //   }
-    //   if(messages.length > 0){
-    //     e.preventDefault()
-    //     errorElement.innerText = messages.join(', ')
-    //   }
-    // })
+    // start fungsi validasi kata yang tidak pantas
+    form.addEventListener('submit', (e) => {
+      let messages = []
+      const inp = document.getElementById("coment").value;
+      const inputSplit = inp.split(" ");
+      const ktp = ["cok", "asu", "babi", "jancok"];
+
+      ada = false;
+      // var input2 = document.getElementById('coment').value = ktp.includes(inputSplit);
+
+      for (let i=0; i<inputSplit.length; i++) {
+        if (ktp.includes(inputSplit[i]) == true) {
+          ada = true;
+        }
+        else if (ktp.includes(inputSplit.length[i]) == false) {
+          tidak = false;
+        }
+      }
+      console.log(ada)
+      if(true) {
+        messages.push("form mengandung kata yang tidak pantas")
+        console.log(inputSplit)
+      } if(messages.length > 0) {
+        e.preventDefault()
+        errorElement.innerText = messages.join(', ')
+      } 
+      else {
+        console.log(inputSplit)
+      }
+    })
+    //end fungsi validasi
+
+    //fungsi validasi selain angka dan tanda baca
+    form.addEventListener('submit', (e) => {
+      let messages = []
+      const inp = document.getElementById("coment").value;
+      const inputSplit = inp.split(" ");
+      const bknTandaBaca = ["[", "}", "{", "@", "#"];
+
+      ada = false;
+
+      for (let i = 0; i < inputSplit.length; i++) {
+        if (bknTandaBaca.includes(inputSplit[i]) == true) {
+          ada = true;
+        }
+        else if (bknTandaBaca.includes(inputSplit.length[i]) == false) {
+          tidak = false;
+        }
+      }
+      console.log(inputSplit)
+      if(true) {
+        messages.push("form mengandung karakter selain tanda baca");
+        console.log(inputSplit);
+      } if (messages.length > 0) {
+        e.preventDefault()
+        errorElement.innerText = messages.join(', ')
+      }
+      else {
+        console.log(inputSplit)
+      }
+    })
     
-
-
   </script>
 </body>
 </html>
