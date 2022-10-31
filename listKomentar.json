@@ -12,8 +12,13 @@
     },
     {
       "nama": "khoirul",
-      "komentar": "halo, namaku irul aku irul dan",
+      "komentar": "halo kamu ",
       "id": 3
+    },
+    {
+      "nama": "khoirul",
+      "komentar": "halo, namaku irul aku irul dan",
+      "id": 4
     }
   ],
   "posts": []

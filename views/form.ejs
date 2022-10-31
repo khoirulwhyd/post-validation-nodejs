@@ -13,9 +13,8 @@
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
     crossorigin="anonymous"></script>
   <h1>Post Validation</h1>
+
   <div id="error"></div>
-
-
   <form id="form" action="/listKomentar" method="post">
     <fieldset>
       <legend>Form</legend>
@@ -66,7 +65,6 @@
       const ktp = ["cok", "asu", "babi", "jancok"];
 
       ada = false;
-      // var input2 = document.getElementById('coment').value = ktp.includes(inputSplit);
 
       for (let i=0; i<inputSplit.length; i++) {
         if (ktp.includes(inputSplit[i]) == true) {
@@ -77,49 +75,64 @@
         }
       }
       console.log(ada)
-      if(true) {
+      if(ada) {
         messages.push("form mengandung kata yang tidak pantas")
         console.log(inputSplit)
-      } if(messages.length > 0) {
-        e.preventDefault()
-        errorElement.innerText = messages.join(', ')
+        if (messages.length > 0) {
+          e.preventDefault()
+          errorElement.innerText = messages.join(', ')
+        }
       } 
       else {
         console.log(inputSplit)
       }
     })
-    //end fungsi validasi
-
-    //fungsi validasi selain angka dan tanda baca
+    //end fungsi validasi kata yang tidak pantas
+    
+    //start validasi karakter selain tanda baca
     form.addEventListener('submit', (e) => {
       let messages = []
-      const inp = document.getElementById("coment").value;
-      const inputSplit = inp.split(" ");
-      const bknTandaBaca = ["[", "}", "{", "@", "#"];
+      const inputC = document.getElementById("coment").value;
+      const SplitInput = inputC.split(" ");
+      const sTndBaca = ["@", "#", "%", "(", ")", ">", "<", "$"];
 
       ada = false;
 
-      for (let i = 0; i < inputSplit.length; i++) {
-        if (bknTandaBaca.includes(inputSplit[i]) == true) {
+      for (let j=0; j<SplitInput.length; j++) {
+        if (sTndBaca.includes(SplitInput[j]) == true) {
           ada = true;
         }
-        else if (bknTandaBaca.includes(inputSplit.length[i]) == false) {
+        else if (sTndBaca.includes(SplitInput.length[j]) == false) {
           tidak = false;
         }
       }
-      console.log(inputSplit)
-      if(true) {
-        messages.push("form mengandung karakter selain tanda baca");
-        console.log(inputSplit);
-      } if (messages.length > 0) {
-        e.preventDefault()
-        errorElement.innerText = messages.join(', ')
+      console.log(ada)
+      if (ada) {
+        messages.push("form mengandung karakter selain tanda baca")
+        console.log(SplitInput)
+        if (messages.length > 0) {
+          e.preventDefault()
+          errorElement.innerText = messages.join(', ')
+        }
       }
       else {
-        console.log(inputSplit)
+        console.log(SplitInput)   
       }
     })
-    
+    //end validasi karakter selain tanda baca
+
+    //start validation ketika ada scipt html
+    form.addEventListener('submit', (e) => {
+      let messages = []
+      const inputForm = document.getElementById("coment").value;
+      const inputFormSplit = inputForm.split(" ");
+      const sciptHtml = ["<html>", "</html>", "<head>", "</head>", "<title>", "</title>",
+                        "<a>", "</a>", "<body>","</body>"];
+      ada = false;
+
+    })
+    //end validation ketika ada scipt html
+
   </script>
 </body>
 </html>
