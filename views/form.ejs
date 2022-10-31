@@ -126,10 +126,30 @@
       let messages = []
       const inputForm = document.getElementById("coment").value;
       const inputFormSplit = inputForm.split(" ");
-      const sciptHtml = ["<html>", "</html>", "<head>", "</head>", "<title>", "</title>",
+      const scriptHtml = ["<html>", "</html>", "<head>", "</head>", "<title>", "</title>",
                         "<a>", "</a>", "<body>","</body>"];
-      ada = false;
 
+      ada = false;
+      
+      for (let k = 0; k < inputFormSplit.length; k++) {
+        if (scriptHtml.includes(inputFormSplit[k]) == true) {
+          ada = true;
+        } else if (scriptHtml.includes(inputFormSplit[k]) == false) {
+          tidak = false;
+        }
+      }
+      console.log(ada);
+      if(ada) {
+        messages.push("form tidak boleh mengandung script html");
+        console.log(inputFormSplit);
+        if (messages.length > 0) {
+          e.preventDefault()
+          errorElement.innerText = messages.join(', ')
+        }
+      }
+      else {
+        console.log(inputFormSplit)
+      }
     })
     //end validation ketika ada scipt html
 
